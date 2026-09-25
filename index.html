@@ -101,13 +101,12 @@ main{flex:1 0 auto;}
   padding-bottom:18px;margin-bottom:clamp(28px,4vw,46px);border-bottom:1px solid var(--ink);position:relative;}
 .sec-head::before{content:"";position:absolute;left:0;bottom:-4px;width:9px;height:9px;border-radius:50%;background:var(--amber);}
 .section-title{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-0.018em;line-height:1.02;text-wrap:balance;}
-.sec-meta{font-family:var(--mono);font-size:0.82rem;color:var(--muted);letter-spacing:0.01em;padding-bottom:6px;}
+.sec-meta{font-family:var(--body);font-style:italic;font-size:0.92rem;color:var(--muted);padding-bottom:6px;}
 
 /* ============ HERO ============ */
 .hero-wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(36px,5vw,72px) clamp(20px,4vw,48px) clamp(56px,7vw,96px);}
 .hero{display:grid;grid-template-columns:1.04fr 0.96fr;gap:clamp(32px,5vw,72px);align-items:center;}
-.hero-kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:0.82rem;color:var(--petrol);margin-bottom:22px;}
-.hero-kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);}
+.hero-kicker{display:block;font-family:var(--body);font-weight:500;font-style:italic;font-size:1rem;color:var(--muted);margin-bottom:18px;}
 .hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,6vw,4.6rem);line-height:0.98;letter-spacing:-0.025em;text-wrap:balance;margin-bottom:20px;}
 .hero h1 .ln2{color:var(--ink);}
 .hero .lede{font-size:clamp(1.05rem,1.4vw,1.22rem);color:var(--ink);max-width:34ch;margin-bottom:14px;font-weight:500;}
@@ -169,6 +168,8 @@ a.pub-row:hover .ptitle{color:var(--petrol-strong);text-decoration:underline;tex
 a.pub-row:hover .marker{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 4px var(--amber-tint);}
 a.pub-row:hover .ext{color:var(--petrol-strong);transform:translate(2px,-2px);}
 a.pub-row:focus-visible{outline:2px solid var(--petrol);outline-offset:2px;}
+.topic-filtering .pub-row{opacity:0.42;transition:opacity .3s var(--ease);}
+.pub-row.topic-match{opacity:1;background:var(--amber-tint);border-radius:10px;box-shadow:inset 3px 0 0 var(--amber-deep);}
 .scholar-note{margin-top:30px;font-family:var(--mono);font-size:0.84rem;color:var(--muted);}
 .scholar-note a{text-decoration:underline;text-underline-offset:3px;}
 
@@ -178,8 +179,7 @@ a.pub-row:focus-visible{outline:2px solid var(--petrol);outline-offset:2px;}
 .project.flip .pj-figs{order:-1;}
 .project.text-only{grid-template-columns:1fr;}
 .pj-body{min-width:0;}
-.pj-tag{font-family:var(--mono);font-size:0.78rem;color:var(--petrol);letter-spacing:0.02em;margin-bottom:12px;display:inline-flex;align-items:center;gap:8px;}
-.pj-tag .d{width:6px;height:6px;border-radius:50%;background:var(--amber);}
+.pj-tag{font-family:var(--body);font-weight:600;font-size:0.86rem;color:var(--petrol-strong);margin-bottom:12px;display:block;}
 .pj-title{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,2.6vw,2.05rem);letter-spacing:-0.015em;line-height:1.04;margin-bottom:16px;}
 .pj-desc{color:var(--ink);font-size:1.02rem;line-height:1.62;max-width:60ch;text-wrap:pretty;}
 .pj-figs{display:flex;flex-direction:column;gap:14px;min-width:0;}
@@ -216,8 +216,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
 .contact-rows{display:flex;flex-direction:column;}
 .crow{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--hair-soft);}
 .crow:first-child{padding-top:0;}
-.crow .label{font-family:var(--mono);font-size:0.8rem;color:var(--muted);letter-spacing:0.02em;display:flex;align-items:center;gap:8px;}
-.crow .label .d{width:6px;height:6px;border-radius:50%;background:var(--amber);flex:none;}
+.crow .label{font-family:var(--body);font-weight:600;font-size:0.92rem;color:var(--muted);}
 .crow .val{display:flex;flex-direction:column;gap:4px;min-width:0;}
 .crow .val a{color:var(--ink);word-break:break-word;transition:color .2s var(--ease);}
 .crow .val a:hover{color:var(--petrol-strong);text-decoration:underline;text-underline-offset:3px;}
@@ -303,7 +302,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
 /* ---- hero graph: living motion + interactive nodes ---- */
 .kg .pulse{fill:var(--amber);opacity:0;}
 .kg .hub-halo{fill:none;stroke:var(--amber);stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center;}
-.kg .chip-box{cursor:grab;}
+.kg .chip-box{cursor:pointer;}
 .kg .gnode.dragging .chip-box{cursor:grabbing;}
 .kg .gnode .chip-box,.kg .gnode .chip-label{touch-action:none;}
 .kg .hub-hit{cursor:grab;touch-action:none;}
@@ -341,7 +340,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
   <div class="hero-wrap">
     <div class="hero">
       <div class="hero-text">
-        <span class="hero-kicker"><span class="dot"></span>PhD Candidate, Computer Science · Kansas State University</span>
+        <span class="hero-kicker">PhD Candidate, Computer Science · Kansas State University</span>
         <h1>Aryan<br><span class="ln2">Singh Dalal</span></h1>
         <p class="lede">Building AI that can explain what it knows.</p>
         <p class="sub">I work on trustworthy AI for scientific knowledge engineering, combining large language models, retrieval-augmented generation, knowledge graphs, ontologies, neuro-symbolic verification, and human-in-the-loop methods to build evidence-grounded and reusable AI systems.</p>
@@ -365,23 +364,23 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
           <!-- everything below moves together when the hub is dragged -->
           <g class="kg-move">
           <!-- nodes (edge + chip grouped so hover lights both) -->
-          <g class="gnode"><line class="edge e1" x1="320" y1="240" x2="320" y2="56"/>
+          <g class="gnode" data-topic="knowledge-graphs" tabindex="0" role="link" aria-label="Show publications on Knowledge Graphs"><line class="edge e1" x1="320" y1="240" x2="320" y2="56"/>
             <g class="n1"><rect class="chip-box" x="241" y="34" width="158" height="44" rx="10"/>
             <text class="chip-label" x="320" y="61" text-anchor="middle">Knowledge Graphs</text></g></g>
 
-          <g class="gnode"><line class="edge e2" x1="320" y1="240" x2="516" y2="132"/>
+          <g class="gnode" data-topic="neurosymbolic-ai" tabindex="0" role="link" aria-label="Show publications on Neurosymbolic AI"><line class="edge e2" x1="320" y1="240" x2="516" y2="132"/>
             <g class="n2"><rect class="chip-box" x="437" y="110" width="158" height="44" rx="10"/>
             <text class="chip-label" x="516" y="137" text-anchor="middle">Neurosymbolic AI</text></g></g>
 
-          <g class="gnode"><line class="edge e3" x1="320" y1="240" x2="516" y2="360"/>
+          <g class="gnode" data-topic="computer-vision" tabindex="0" role="link" aria-label="Show publications on Computer Vision"><line class="edge e3" x1="320" y1="240" x2="516" y2="360"/>
             <g class="n3"><rect class="chip-box" x="437" y="338" width="158" height="44" rx="10"/>
             <text class="chip-label" x="516" y="365" text-anchor="middle">Computer Vision</text></g></g>
 
-          <g class="gnode"><line class="edge e4" x1="320" y1="240" x2="124" y2="360"/>
+          <g class="gnode" data-topic="trustworthy-ai" tabindex="0" role="link" aria-label="Show publications on Trustworthy AI"><line class="edge e4" x1="320" y1="240" x2="124" y2="360"/>
             <g class="n4"><rect class="chip-box" x="45" y="338" width="158" height="44" rx="10"/>
             <text class="chip-label" x="124" y="365" text-anchor="middle">Trustworthy AI</text></g></g>
 
-          <g class="gnode"><line class="edge e5" x1="320" y1="240" x2="124" y2="132"/>
+          <g class="gnode" data-topic="ontology-engineering" tabindex="0" role="link" aria-label="Show publications on Ontology Engineering"><line class="edge e5" x1="320" y1="240" x2="124" y2="132"/>
             <g class="n5"><rect class="chip-box" x="45" y="110" width="158" height="44" rx="10"/>
             <text class="chip-label" x="124" y="137" text-anchor="middle">Ontology Engineering</text></g></g>
 
@@ -417,49 +416,49 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
     <div class="pubgroup">
       <div class="subhead"><span class="sd"></span>Peer-reviewed</div>
       <ol class="pub-list">
-        <li class="pub"><a class="pub-row" href="https://doi.org/10.1177/15705838251329268" target="_blank" rel="noopener"><span class="marker"></span><div>
+        <li class="pub"><a class="pub-row" href="https://doi.org/10.1177/15705838251329268" data-topics="knowledge-graphs ontology-engineering" target="_blank" rel="noopener"><span class="marker"></span><div>
           <div class="ptitle">OLIVE: Ontology Learning With Integrated Vector Embeddings <span class="ext">&#8599;</span></div>
           <div class="authors">Yinglun Zhang, <span class="self">Aryan Singh Dalal</span>, Caleb Martin, Srikar Reddy Gadusu, Hande K&uuml;&ccedil;&uuml;k McGinty</div>
           <div class="venue">Applied Ontology 20(1), 36&ndash;53 <span class="yr">· 2025</span></div>
         </div></a></li>
 
-        <li class="pub"><a class="pub-row" href="https://ieeexplore.ieee.org/abstract/document/11486455" target="_blank" rel="noopener"><span class="marker"></span><div>
+        <li class="pub"><a class="pub-row" href="https://ieeexplore.ieee.org/abstract/document/11486455" data-topics="ontology-engineering" target="_blank" rel="noopener"><span class="marker"></span><div>
           <div class="ptitle">WiseOWL: A Methodology for Evaluating Ontological Descriptiveness and Semantic Correctness for Ontology Reuse and Ontology Recommendations <span class="ext">&#8599;</span></div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span>, Maria Baloch, Asiyah Yu Lin, Anna Maria Masci, Kathleen M. Jagodnik, Hande K&uuml;&ccedil;&uuml;k McGinty</div>
           <div class="venue">2026 IEEE International Conference on Semantic Computing (ICSC), pp. 9&ndash;15 <span class="yr">· 2026</span></div>
         </div></a></li>
 
-        <li class="pub"><a class="pub-row" href="https://doi.org/10.1145/3731443.3771367" target="_blank" rel="noopener"><span class="marker"></span><div>
+        <li class="pub"><a class="pub-row" href="https://doi.org/10.1145/3731443.3771367" data-topics="computer-vision knowledge-graphs" target="_blank" rel="noopener"><span class="marker"></span><div>
           <div class="ptitle">GLIIDE: Global-Local Image Integration via Descriptive Extraction <span class="ext">&#8599;</span></div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span>, Soheil Abadifard, Hande K&uuml;&ccedil;&uuml;k McGinty</div>
           <div class="venue">13th International Conference on Knowledge Capture (K-CAP '25), pp. 194&ndash;197 <span class="yr">· Dec 2025</span></div>
         </div></a></li>
 
-        <li class="pub"><a class="pub-row" href="https://ceur-ws.org/Vol-4246/llms4kgoe-5.pdf" target="_blank" rel="noopener"><span class="marker"></span><div>
+        <li class="pub"><a class="pub-row" href="https://ceur-ws.org/Vol-4246/llms4kgoe-5.pdf" data-topics="trustworthy-ai knowledge-graphs ontology-engineering neurosymbolic-ai" target="_blank" rel="noopener"><span class="marker"></span><div>
           <div class="ptitle">PERSEUS: Reducing LLM Hallucinations in Multimodal Knowledge Graph Construction and Ontology Learning <span class="ext">&#8599;</span></div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span>, Hande K&uuml;&ccedil;&uuml;k McGinty</div>
           <div class="venue">Joint Proceedings of LLMS4KGOE 2026 and ELMKE 2026, CEUR-WS Vol. 4246, pp. 45&ndash;51 <span class="yr">· 2026</span></div>
         </div></a></li>
 
-        <li class="pub"><a class="pub-row" href="https://doi.org/10.52825/ocp.v8i.3173" target="_blank" rel="noopener"><span class="marker"></span><div>
+        <li class="pub"><a class="pub-row" href="https://doi.org/10.52825/ocp.v8i.3173" data-topics="ontology-engineering trustworthy-ai" target="_blank" rel="noopener"><span class="marker"></span><div>
           <div class="ptitle">Echo-LLM: Evidence-Checked Hierarchical Ontology <span class="ext">&#8599;</span></div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span>, Hande K&uuml;&ccedil;&uuml;k McGinty</div>
           <div class="venue">Open Conference Proceedings, Vol. 8 <span class="yr">· 2026</span></div>
         </div></a></li>
 
-        <li class="pub"><a class="pub-row" href="https://doi.org/10.3389/fther.2026.1808591" target="_blank" rel="noopener"><span class="marker"></span><div>
+        <li class="pub"><a class="pub-row" href="https://doi.org/10.3389/fther.2026.1808591" data-topics="computer-vision" target="_blank" rel="noopener"><span class="marker"></span><div>
           <div class="ptitle">Examining Condensation and Freezing Behavior on a Laser-Patterned Metallic Surface Using an AI Neural Network Model <span class="ext">&#8599;</span></div>
           <div class="authors">Jane C. Turner, <span class="self">Aryan Singh Dalal</span>, Hande K&uuml;&ccedil;&uuml;k McGinty, Melanie M. Derby, Amy R. Betz</div>
           <div class="venue">Frontiers in Thermal Engineering 6, 1808591 <span class="yr">· 2026</span></div>
         </div></a></li>
 
-        <li class="pub"><a class="pub-row" href="https://doi.org/10.1016/j.compag.2025.111341" target="_blank" rel="noopener"><span class="marker"></span><div>
+        <li class="pub"><a class="pub-row" href="https://doi.org/10.1016/j.compag.2025.111341" data-topics="computer-vision" target="_blank" rel="noopener"><span class="marker"></span><div>
           <div class="ptitle">Computer Vision Based Automated Quantification of Agricultural Sprayers Boom Displacement <span class="ext">&#8599;</span></div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span>, Sidharth Rai, Rahul Singh, Treman Singh Kaloya, Rahul Harsha Cheppally, Ajay Sharda</div>
           <div class="venue">Computers and Electronics in Agriculture 243, 111341 <span class="yr">· 2026</span></div>
         </div></a></li>
 
-        <li class="pub"><a class="pub-row" href="https://arxiv.org/abs/2504.19334" target="_blank" rel="noopener"><span class="marker"></span><div>
+        <li class="pub"><a class="pub-row" href="https://arxiv.org/abs/2504.19334" data-topics="computer-vision" target="_blank" rel="noopener"><span class="marker"></span><div>
           <div class="ptitle">Enhancing Seeding Efficiency Using a Computer Vision System to Monitor Furrow Quality in Real-Time <span class="ext">&#8599;</span></div>
           <div class="authors">Sidharth Rai, R. Slichter, <span class="self">Aryan Singh Dalal</span>, Ajay Sharda</div>
           <div class="venue">Precision Agriculture '25, pp. 1038&ndash;1044, Wageningen Academic <span class="yr">· 2025</span></div>
@@ -470,7 +469,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
     <div class="pubgroup">
       <div class="subhead"><span class="sd"></span>Preprint</div>
       <ol class="pub-list">
-        <li class="pub"><a class="pub-row" href="https://arxiv.org/abs/2510.06433" target="_blank" rel="noopener"><span class="marker"></span><div>
+        <li class="pub"><a class="pub-row" href="https://arxiv.org/abs/2510.06433" data-topics="knowledge-graphs" target="_blank" rel="noopener"><span class="marker"></span><div>
           <div class="ptitle">Flavonoid Fusion: Creating a Knowledge Graph to Unveil the Interplay Between Food and Health <span class="ext">&#8599;</span></div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span>, Yinglun Zhang, Duru Dogan, Atalay Mert &#304;leri, Hande K&uuml;&ccedil;&uuml;k McGinty</div>
           <div class="venue">arXiv:2510.06433 <span class="yr">· 2025</span></div>
@@ -481,25 +480,25 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
     <div class="pubgroup">
       <div class="subhead"><span class="sd"></span>In press &amp; submitted</div>
       <ol class="pub-list">
-        <li class="pub"><div class="pub-row"><span class="marker"></span><div>
+        <li class="pub"><div class="pub-row" data-topics="trustworthy-ai knowledge-graphs neurosymbolic-ai"><span class="marker"></span><div>
           <div class="ptitle">Hallucination-Aware Multimodal Knowledge Extraction into Knowledge Graphs with LLMs <span class="status">under revision</span></div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span>, Hande K&uuml;&ccedil;&uuml;k McGinty</div>
           <div class="venue">Journal of Web Semantics <span class="yr">· 2026</span></div>
         </div></div></li>
 
-        <li class="pub"><div class="pub-row"><span class="marker"></span><div>
+        <li class="pub"><div class="pub-row" data-topics="ontology-engineering"><span class="marker"></span><div>
           <div class="ptitle">WiseOWL 2.0: A Methodology for Evaluating Ontological Descriptiveness and Semantic Correctness for Ontology Reuse and Ontology Recommendations <span class="status">submitted</span></div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span>, Hande K&uuml;&ccedil;&uuml;k McGinty</div>
           <div class="venue">International Journal of Semantic Computing <span class="yr">· 2026</span></div>
         </div></div></li>
 
-        <li class="pub"><div class="pub-row"><span class="marker"></span><div>
+        <li class="pub"><div class="pub-row" data-topics="computer-vision"><span class="marker"></span><div>
           <div class="ptitle">Comparison of Computer-Vision-Extracted Droplet Statistics with Classical Dropwise Condensation Theory <span class="status">accepted</span></div>
           <div class="authors">Michael O. Akinsoloyin, Jane Turner, Soheil Abadifard, Pravesh Niroula, <span class="self">Aryan Singh Dalal</span>, Hande K&uuml;&ccedil;&uuml;k McGinty, Amy R. Betz, Melanie M. Derby</div>
           <div class="venue">8th Micro/Nanoscale Heat &amp; Mass Transfer International Conference (MNHMT 2027), Napoli, Italy <span class="yr">· Jan 2027</span></div>
         </div></div></li>
 
-        <li class="pub"><div class="pub-row"><span class="marker"></span><div>
+        <li class="pub"><div class="pub-row" data-topics="knowledge-graphs"><span class="marker"></span><div>
           <div class="ptitle">Nurture KG: Navigating Urban Resilience through Urban Food Ecosystems Using Knowledge Graphs <span class="status">submitted</span></div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span>, Hande K&uuml;&ccedil;&uuml;k McGinty</div>
           <div class="venue">Urban Food Symposium <span class="yr">· 2026</span></div>
@@ -510,12 +509,12 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
     <div class="pubgroup">
       <div class="subhead"><span class="sd"></span>In preparation</div>
       <ol class="pub-list">
-        <li class="pub"><div class="pub-row"><span class="marker"></span><div>
+        <li class="pub"><div class="pub-row" data-topics="ontology-engineering"><span class="marker"></span><div>
           <div class="ptitle">Ontology Maintenance Strategies: A Taxonomy and Integrative Review</div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span>, Hande K&uuml;&ccedil;&uuml;k McGinty</div>
           <div class="venue">Manuscript in preparation for IEEE Access</div>
         </div></div></li>
-        <li class="pub"><div class="pub-row"><span class="marker"></span><div>
+        <li class="pub"><div class="pub-row" data-topics="ontology-engineering knowledge-graphs"><span class="marker"></span><div>
           <div class="ptitle">A Comprehensive Survey on Construction of Description Logic Axioms from Triples</div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span>, Soheil Abadifard, Nirmal Gelal, Pravesh Niroula, Hande K&uuml;&ccedil;&uuml;k McGinty</div>
           <div class="venue">Manuscript in preparation for IEEE Access</div>
@@ -526,7 +525,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
     <div class="pubgroup">
       <div class="subhead"><span class="sd"></span>Thesis</div>
       <ol class="pub-list">
-        <li class="pub"><a class="pub-row" href="https://krex.k-state.edu/bitstreams/0576399d-dae9-479d-996d-09790d9d21b8/download" target="_blank" rel="noopener"><span class="marker"></span><div>
+        <li class="pub"><a class="pub-row" href="https://krex.k-state.edu/bitstreams/0576399d-dae9-479d-996d-09790d9d21b8/download" data-topics="computer-vision" target="_blank" rel="noopener"><span class="marker"></span><div>
           <div class="ptitle">Quantifying Target Movement Using Neural Networks <span class="ext">&#8599;</span></div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span></div>
           <div class="venue">M.S. Thesis, Kansas State University <span class="yr">· 2023</span></div>
@@ -537,12 +536,12 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
     <div class="pubgroup">
       <div class="subhead"><span class="sd"></span>Patents</div>
       <ol class="pub-list">
-        <li class="pub"><a class="pub-row" href="https://patents.google.com/patent/US12490733B2/en" target="_blank" rel="noopener"><span class="marker"></span><div>
+        <li class="pub"><a class="pub-row" href="https://patents.google.com/patent/US12490733B2/en" data-topics="computer-vision" target="_blank" rel="noopener"><span class="marker"></span><div>
           <div class="ptitle">System and Method for an Agricultural Machine <span class="ext">&#8599;</span></div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span> et al.</div>
           <div class="venue">U.S. Patent 12,490,733 B2 <span class="yr">· issued Dec 9, 2025</span></div>
         </div></a></li>
-        <li class="pub"><div class="pub-row"><span class="marker"></span><div>
+        <li class="pub"><div class="pub-row" data-topics="computer-vision"><span class="marker"></span><div>
           <div class="ptitle">Integrated Optical Imaging and AI-Based System for Characterization of Condensation and Freezing Behavior on Microtextured Metallic Surfaces</div>
           <div class="authors"><span class="self">Aryan Singh Dalal</span> et al.</div>
           <div class="venue">U.S. Provisional Patent Application No. 64/030,533 · KSURF Disclosure No. 2026-046 · Attorney Docket No. 63331-PRO <span class="yr">· filed Apr 6, 2026 · NSF/NASA ISS project</span></div>
@@ -584,7 +583,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
 
       <article class="project">
         <div class="pj-body">
-          <span class="pj-tag"><span class="d"></span>DOD-funded · social media + public health</span>
+          <span class="pj-tag">DOD-funded · social media + public health</span>
           <h3 class="pj-title">SparKG</h3>
           <p class="pj-desc">An automated system that turns social media into a real-time public-health monitor for emerging drug trends. It pulls posts, comments, and videos from Reddit, TikTok, and YouTube, then reads them with transformer models, OCR, and speech recognition to catch both explicit and subtle signals. Captions, transcripts, hashtags, and on-screen text merge into single records. A risk-scoring module flags high-risk or viral content, behavioral ontologies interpret substance mentions and psychological cues, and an interactive dashboard surfaces trends from daily spikes to long-range patterns.</p>
         </div>
@@ -596,7 +595,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
 
       <article class="project flip">
         <div class="pj-body">
-          <span class="pj-tag"><span class="d"></span>NSF-funded · space systems + computer vision</span>
+          <span class="pj-tag">NSF-funded · space systems + computer vision</span>
           <h3 class="pj-title">Water Condensation</h3>
           <p class="pj-desc">Neural networks that study how water and ice droplets form and behave in normal and microgravity conditions, where nucleation is hard to observe by traditional means. The pipeline processes large sets of experimental imagery to quantify droplet growth, coalescence, and freezing. Hand-annotated data trained a neural analysis interface (NAI) that detects and measures droplet dynamics, and a knowledge graph links the observed behavior to the underlying physics. It ships as a cloud-based, open-source module that accepts both image and video input, replacing a slow manual process with scalable analysis for aerospace and heat-transfer research.</p>
         </div>
@@ -608,7 +607,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
 
       <article class="project">
         <div class="pj-body">
-          <span class="pj-tag"><span class="d"></span>multimodal · submitted to ESWC 2026</span>
+          <span class="pj-tag">multimodal · submitted to ESWC 2026</span>
           <h3 class="pj-title">PERSEUS</h3>
           <p class="pj-desc">A method for building reliable ontologies from mixed sources while catching the hallucinations that large language models introduce. A cross-modal validation pipeline runs consistency checks across text, image, and audio, verifying LLM-inferred relations against metadata and semantic labels. An interactive interface lets people inspect, refine, and approve ontology graphs as they go. The feedback loop raised ontology accuracy by 11% over standard LLM-only methods and made multimodal ontology construction a transparent, user-guided process.</p>
         </div>
@@ -620,7 +619,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
 
       <article class="project flip">
         <div class="pj-body">
-          <span class="pj-tag"><span class="d"></span>2026–Present · ontology search + recommendation</span>
+          <span class="pj-tag">2026–Present · ontology search + recommendation</span>
           <h3 class="pj-title"><a href="https://kgreranker.aryand1.workers.dev/" target="_blank" rel="noopener">KgReRanker &#8599;</a></h3>
           <p class="pj-desc">Sole researcher and developer. Designed and implemented a quality-aware ontology search and recommendation system that retrieves topic-relevant BioPortal ontologies and re-ranks them using semantic relevance and ontology-quality evidence. KgReRanker combines keyword-match signals with four quality dimensions—descriptiveness, definition quality, semantic connectivity, and hierarchical structure—so users can compare candidate ontologies by topical fit and structural quality when selecting resources for ontology reuse.</p>
         </div>
@@ -631,7 +630,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
 
       <article class="project flip">
         <div class="pj-body">
-          <span class="pj-tag"><span class="d"></span>ontology evaluation · submitted to ICSC 2026</span>
+          <span class="pj-tag">ontology evaluation · submitted to ICSC 2026</span>
           <h3 class="pj-title">WiseOWL</h3>
           <p class="pj-desc">An ontology validation tool that scores any ontology or knowledge graph across four metrics: entity-description quality, semantic connectivity between descriptions and entities, connection richness, and the depth and balance of the class hierarchy. It reports each score plus an average, and automatically flags any metric below 40%. Where it finds gaps, it suggests concrete next steps, such as clarifying descriptions, adding relational links, or rebalancing the hierarchy, so a raw validation result becomes a clear plan for improving reuse.</p>
         </div>
@@ -642,7 +641,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
 
       <article class="project">
         <div class="pj-body">
-          <span class="pj-tag"><span class="d"></span>tool · LLM + Neo4j · published</span>
+          <span class="pj-tag">tool · LLM + Neo4j · published</span>
           <h3 class="pj-title"><a href="https://www.olivegraph.com/" target="_blank" rel="noopener">OLIVE &#8599;</a></h3>
           <p class="pj-desc">A semi-automated system that makes ontology building faster and easier to manage. Instead of experts defining every relationship by hand, OLIVE pairs large language models (ChatGPT and LLaMA) with the Neo4j graph database to generate and organize relationships from structured and unstructured data. People enter concepts or short prompts, and OLIVE assembles a knowledge graph showing how they connect, visualized live through WebVOWL. Experts review and correct results in the same interface. Validation with Prot&eacute;g&eacute;'s reasoner and the OOPS! pitfall scanner confirmed logically sound output, and the workflow cut the time to build an ontology while improving how precisely relationships are captured.</p>
         </div>
@@ -655,7 +654,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
 
       <article class="project text-only">
         <div class="pj-body">
-          <span class="pj-tag"><span class="d"></span>evidence-checked ontology learning</span>
+          <span class="pj-tag">evidence-checked ontology learning</span>
           <h3 class="pj-title">Echo-LLM</h3>
           <p class="pj-desc">Developed evidence-checked, LLM-supported ontology learning methods for more reliable hierarchical knowledge construction, combining generated concepts with verification before incorporation into the ontology.</p>
         </div>
@@ -663,7 +662,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
 
       <article class="project text-only">
         <div class="pj-body">
-          <span class="pj-tag"><span class="d"></span>K-State funded · urban food systems</span>
+          <span class="pj-tag">K-State funded · urban food systems</span>
           <h3 class="pj-title">Nurture KG</h3>
           <p class="pj-desc">Contributed knowledge-graph methods for representing urban food ecosystems and connecting food-system resilience, food security, climate-related factors, and predictive analysis within an interdisciplinary K-State project.</p>
         </div>
@@ -671,7 +670,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
 
       <article class="project text-only">
         <div class="pj-body">
-          <span class="pj-tag"><span class="d"></span>GRIP K-State funded · food + health</span>
+          <span class="pj-tag">GRIP K-State funded · food + health</span>
           <h3 class="pj-title">Flavonoid Fusion</h3>
           <p class="pj-desc">Built knowledge-graph resources linking food, health, and semantic representations using USDA data, with the goal of making relationships between dietary compounds and health evidence easier to explore.</p>
         </div>
@@ -867,17 +866,17 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
       <div>
         <p class="contact-intro">Happy to talk research, collaboration, or what comes next.</p>
         <div class="contact-rows">
-          <div class="crow"><span class="label"><span class="d"></span>email</span><span class="val">
+          <div class="crow"><span class="label">email</span><span class="val">
             <a href="mailto:aryand@ksu.edu">aryand@ksu.edu</a>
             <a href="mailto:aryan.dalal79@gmail.com">aryan.dalal79@gmail.com</a>
           </span></div>
-          <div class="crow"><span class="label"><span class="d"></span>linkedin</span><span class="val">
+          <div class="crow"><span class="label">linkedin</span><span class="val">
             <a href="https://www.linkedin.com/in/aryan-singh-dalal/" target="_blank" rel="noopener">linkedin.com/in/aryan-singh-dalal</a>
           </span></div>
-          <div class="crow"><span class="label"><span class="d"></span>github</span><span class="val">
+          <div class="crow"><span class="label">github</span><span class="val">
             <a href="https://github.com/aryand1" target="_blank" rel="noopener">github.com/aryand1</a>
           </span></div>
-          <div class="crow"><span class="label"><span class="d"></span>labs</span><span class="val">
+          <div class="crow"><span class="label">labs</span><span class="val">
             <a href="https://www.koncordantlab.com/" target="_blank" rel="noopener">Koncordant Lab</a>
             <a href="https://daselab.cs.ksu.edu/people/aryan-dalal" target="_blank" rel="noopener">DaSe Lab, K-State CS</a>
             <a href="https://farmslab.k-state.edu/team-members/graduate-students/dalal/" target="_blank" rel="noopener">FARMS Lab, K-State</a>
@@ -942,7 +941,9 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
    while the topic nodes trail behind it like masses on springs (soft spring +
    light damping => clear lag, then a few wobbles into place). Each node is also
    draggable on its own and settles with the same spring. The hub springs back to
-   centre crisply. Decorative motion respects prefers-reduced-motion. */
+   centre crisply. A plain click (no meaningful drag) on a topic node instead
+   jumps to Publications and highlights the papers tagged with that topic.
+   Decorative motion respects prefers-reduced-motion. */
 (function(){
   var svg = document.querySelector('.kg');
   if(!svg) return;
@@ -958,6 +959,7 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
   var DX0=86, DX1=554, DY0=28, DY1=442;       // direct-drag bounds (stay on canvas)
   var PX0=6,  PX1=634, PY0=6,  PY1=464;       // physics bounds (room to overshoot)
   var HX0=235, HX1=405, HY0=140, HY1=340;     // hub drag range (tidy)
+  var CLICK_SLOP = 6;                         // px of movement still counted as a click
 
   var hub = {pos:{x:HOME.x,y:HOME.y}, vel:{x:0,y:0}, last:{x:HOME.x,y:HOME.y}, dragging:false};
 
@@ -991,7 +993,39 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
     return {x:p.x, y:p.y};
   }
 
+  /* --- topic navigation: jump to Publications and highlight matching rows --- */
+  function goToTopic(topic){
+    if(!topic) return;
+    location.hash = 'publications';
+    requestAnimationFrame(function(){
+      var rows = document.querySelectorAll('.pub-row[data-topics]');
+      var matches = [];
+      rows.forEach(function(r){
+        var topics = (r.getAttribute('data-topics')||'').split(/\s+/);
+        var hit = topics.indexOf(topic) !== -1;
+        r.classList.toggle('topic-match', hit);
+        if(hit) matches.push(r);
+      });
+      document.body.classList.add('topic-filtering');
+      if(matches[0]) matches[0].scrollIntoView({block:'center', behavior: reduced ? 'auto' : 'smooth'});
+    });
+  }
+  function clearTopicHighlight(){
+    document.body.classList.remove('topic-filtering');
+    document.querySelectorAll('.pub-row.topic-match').forEach(function(r){ r.classList.remove('topic-match'); });
+  }
+  // Clicking elsewhere, or leaving Publications, clears the highlight.
+  document.addEventListener('click', function(e){
+    if(!document.body.classList.contains('topic-filtering')) return;
+    if(e.target.closest('.pub-row') || e.target.closest('.gnode')) return;
+    clearTopicHighlight();
+  });
+  window.addEventListener('hashchange', function(){
+    if(location.hash.replace('#','') !== 'publications') clearTopicHighlight();
+  });
+
   var activeNode = null, nGrab = {x:0,y:0}, hGrab = {x:0,y:0};
+  var downPos = null, downTarget = null;
 
   nodes.forEach(function(n){
     n.el.addEventListener('pointerdown', function(e){
@@ -1002,6 +1036,15 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
       var p = toSVG(e);
       nGrab.x = p.x - n.pos.x; nGrab.y = p.y - n.pos.y;
       n.last.x = n.pos.x; n.last.y = n.pos.y;
+      downPos = {x:e.clientX, y:e.clientY};
+      downTarget = n;
+    });
+    n.el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        var g = n.gnode || (n.el.closest && n.el.closest('.gnode'));
+        goToTopic(g && g.getAttribute('data-topic'));
+      }
     });
   });
   if(hubHit){
@@ -1028,13 +1071,20 @@ figcaption{font-family:var(--mono);font-size:0.74rem;color:var(--muted);margin-t
       hub.pos.y = clamp(q.y - hGrab.y, HY0, HY1);
     }
   }
-  function onUp(){
+  function onUp(e){
     if(activeNode){
       if(activeNode.gnode) activeNode.gnode.classList.remove('dragging');
+      var wasClick = downPos && Math.abs(e.clientX-downPos.x) <= CLICK_SLOP && Math.abs(e.clientY-downPos.y) <= CLICK_SLOP;
+      var clickedNode = activeNode;
       activeNode.dragging = false;
       if(reduced){ activeNode.pos.x=activeNode.home.x; activeNode.pos.y=activeNode.home.y; activeNode.vel.x=0; activeNode.vel.y=0; }
       activeNode = null;
+      if(wasClick && clickedNode === downTarget){
+        var g = clickedNode.gnode || (clickedNode.el.closest && clickedNode.el.closest('.gnode'));
+        goToTopic(g && g.getAttribute('data-topic'));
+      }
     }
+    downPos = null; downTarget = null;
     if(hub.dragging){
       hub.dragging = false;
       if(hubHit) hubHit.classList.remove('dragging');
